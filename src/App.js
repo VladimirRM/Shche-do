@@ -9,6 +9,7 @@ const App = () => {
   const addTodo = ()=> {
     const todo = {
       text: inputValue,
+      id:Date.now(),
 
     }
     setTodos({...prev => prev.text})
