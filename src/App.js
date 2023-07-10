@@ -1,12 +1,21 @@
+import { useState } from "react"
 
-import './App.css';
 
-function App() {
+const App = () => {
+  const [todos,setTodos] = useState([])
+
+
+  const addTodo = ()=> {
+    const todo = {
+      text: inputValue,
+      
+    }
+  }
   return (
-    <div className="App">
-   
+    <div>
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
