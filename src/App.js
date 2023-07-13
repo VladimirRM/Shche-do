@@ -1,42 +1,72 @@
-import React ,{useState}from 'react'
+import React,{useState} from 'react'
 import './App.css'
 
+
 const App = () => {
-  const [todos,setTodos] = useState([])
-  const [inputValue,setInputValue] = useState('')
-
-
-
+  const [todos,setTodos ] = useState([])
+  const [inputValue,setInputValue ] = useState('')
+  const [edit,setEdit ] = useState(null)
+  const [editValue,setEditValue ] = useState('')
 
   const addTodo = ()=>{
     const todo = {
       text: inputValue,
-      id:Date.now(),
-      completed: false
+      id:Date.now()
     }
-    setTodos([...todos,todo])
-    setInputValue('')
-  }
-const toggleTodo =(todo,id)=>{
-  setTodos([
-   ...todos.map((todo)=>todo.id?{...todo,complete:!todo.complete}:{...todo})
-  ])
- }
+     setTodos([...todos,todo])
+     setInputValue('')
+    }
+
+     const removeTodo = (id)=>{
+        setTodos([...todos].filter((todo)=>todo.id !== id))
+     }
+     const editTodo = (id,text)=>{
+      setEdit(id)
+      setEditValue(text)
+     }
+
+     const saveTodo = (id)=>{
+      const editTodo = [...todos].map(todo=>{
+        if(todo.id === id){
+          todo.text = editValue
+        }
+        return todo
+      })
+      setTodos(editTodo)
+      setEdit(null)
+     }
 
   return (
     <div>
-      <input type="text" 
+      <input type="text"
+      onChange={(e)=>setInputValue(e.target.value)}
       value={inputValue}
-      onChange={e=>setInputValue(e.target.value)}
-      />
-      <button onClick={addTodo}>Add</button>
+     />
+     <button onClick={addTodo}>Add todo</button>
+     <div>
       {todos.map((todo)=>(
-        <div>
-          <div  key={todo.id}className={todo.complete ?'checkBox':''} onClick={()=>toggleTodo(todo.id)}>{todo.text}</div>
-        
-        </div>
+     <div>
+      {edit === todo.id ? 
+    <div>
+      <input type="text"
+      onChange={(e)=>setEditValue(e.target.value)}
+      value={editValue}
+      />
+      <button onClick={saveTodo}>Save</button>
+    </div>:
+    <div>
+         <div key={todo.id}>{todo.text}
+        <button onClick={()=>removeTodo(todo.id)}>Delete</button>
+        <button onClick={()=>editTodo(todo.id)}>Edit</button>
+         </div>
+    </div>  
+    }
+     </div>
         
       ))}
+
+     </div>
+      
     </div>
   )
 }
