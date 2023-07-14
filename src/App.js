@@ -9,12 +9,24 @@ const App = () => {
   const [edit, setEdit]= useState(null)
   const [editValue, setEditValue]= useState('')
 
+  const addTodo = ()=>{
+    const todo = {
+      text: inputValue,
+      id:Date.now(),
+      // completed: false,
+    }
+  }
+
   return (
     <div>
       <input type="text"
       value={inputValue}
       onChange={(e)=>setInputValue(e.target.value)}
       />
+      <button onClick={addTodo}>Add todo</button>
+      {todos.map((todo)=>(
+        <div>{todo.text}</div>
+      ))}
       
     </div>
   )
