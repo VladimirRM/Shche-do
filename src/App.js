@@ -37,7 +37,7 @@ const saveTodo = (id)=>{
   setEdit(null)
 }
 const toggleTodo = (id)=>{
-    setTodos( todos.map(todo=>{
+    setTodos( [...todos].map(todo=>{
       if(todo.id !== id)
         return todo
         return {
