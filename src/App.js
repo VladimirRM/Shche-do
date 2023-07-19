@@ -64,6 +64,7 @@ const App = () => {
           onChange={e=>setEditValue(e.target.value)}
           value={editValue}
           />
+          <button onClick={()=>saveTodo(todo.id)}>Save</button>
         </div>  :
         <div>
                 {todo.text}
