@@ -51,7 +51,11 @@ const App = () => {
   }
   return (
     <div>
-      
+      <input type='text'
+      onChange={e=>setInput(e.target.value)}
+      value={input}
+      />
+      <button onClick={addTodo}>Add todo</button>
     </div>
   )
 }
