@@ -40,7 +40,7 @@ const App = () => {
     setEdit(null)
   }
 
-  const toggleTodo = ()=>{
+  const toggleTodo = (id)=>{
     setTodos([...todos].map((todo)=>{
       if( todo.id !== id)
       return todo
@@ -56,6 +56,13 @@ const App = () => {
       value={input}
       />
       <button onClick={addTodo}>Add todo</button>
+      {todos.map((todo)=>(
+        <div>
+          {todo.text}
+          <button onClick={()=>removeTodo(todo.id)}>Delete</button>
+          <button onClick={()=>editTodo(todo.id)}>Edit</button>
+        </div>
+      ))}
     </div>
   )
 }
