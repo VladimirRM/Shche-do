@@ -52,6 +52,11 @@ const App = () => {
       <input type="text"
       value={input}
       onChange={e=> setInput(e.target.value)} />
+      {todos.map((todo)=>(
+        <div>
+          {todo.text}
+        </div>
+      ))}
     </div>
   )
 }
