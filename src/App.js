@@ -7,6 +7,17 @@ const App = () => {
   const [ editValue,setEditValue] = useState(null)
 
 
+  const  addTodo = ()=>{
+    if(input.trim().length){
+      const todo = {
+        text: input,
+        id:Date.now(),
+        completed: false,
+      }
+    }
+  }
+
+
   return (
     <div>
       
