@@ -29,7 +29,7 @@ const App = () => {
   }
   const saveTodo = (id )=>{
        const editTodo = [...todos].map(todo=>{
-        id(todo.id === id)
+        if(todo.id === id)
           todo.text = editValue
         
          return todo
@@ -53,6 +53,7 @@ const App = () => {
       value={input}
       onChange={e=> setInput(e.target.value)} />
       <button onClick={addTodo}>Add todo</button>
+      <div>
       {todos.map((todo)=>(
         <div>
           {edit ===todo.id ? 
@@ -61,9 +62,9 @@ const App = () => {
           value={editValue}
           onChange={e=> setEditValue(e.target.value)}
           />
-          
+          <button onClick={()=> saveTodo(todo.id)}>Save</button>
         </div>  :
-        <div>
+        <div className={ todo.completed ? 'checkBox' : ''}>
              {todo.text}
           <button onClick={()=>removeTodo(todo.id)}>Delete</button>
           <button onClick={()=>editTodo(todo.id, todo.text)}>Edit</button>
@@ -76,6 +77,7 @@ const App = () => {
        
         </div>
       ))}
+      </div>
     </div>
   )
 }
