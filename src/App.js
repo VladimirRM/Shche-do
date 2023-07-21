@@ -14,6 +14,9 @@ const App = () => {
         id:Date.now(),
         completed: false,
       }
+      setTodos([...todos,todo])
+
+      setInput('')
     }
   }
 
