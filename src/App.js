@@ -52,6 +52,7 @@ const App = () => {
       <input type="text"
       value={input}
       onChange={e=> setInput(e.target.value)} />
+      <button onClick={addTodo}>Add todo</button>
       {todos.map((todo)=>(
         <div>
           {edit ===todo.id ? 
@@ -60,11 +61,16 @@ const App = () => {
           value={editValue}
           onChange={e=> setEditValue(e.target.value)}
           />
+          
         </div>  :
         <div>
              {todo.text}
           <button onClick={()=>removeTodo(todo.id)}>Delete</button>
           <button onClick={()=>editTodo(todo.id, todo.text)}>Edit</button>
+          <input type="checkbox"
+           checked={todo.completed}
+           onChange={()=> toggleTodo(todo.id)}
+          />
         </div>
         }
        
