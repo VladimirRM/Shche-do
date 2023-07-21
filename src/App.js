@@ -27,6 +27,16 @@ const App = () => {
     setEdit(id)
     setEditValue(text)
   }
+  const saveTodo = (id )=>{
+       const editTodo = [...todos].map(todo=>{
+        id(todo.id === id){
+          todo.text = editValue
+        }
+        setTodos(editTodo)
+        setEdit(null)
+       })
+  }
+  const toggleTodo
 
 
   return (
