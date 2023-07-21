@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './App.css'
 const App = () => {
   const [ todos,setTodos] = useState([])
@@ -29,9 +29,9 @@ const App = () => {
   }
   const saveTodo = (id )=>{
        const editTodo = [...todos].map(todo=>{
-        id(todo.id === id){
+        id(todo.id === id)
           todo.text = editValue
-        }
+        
          return todo
        })
        setTodos(editTodo)
@@ -54,9 +54,20 @@ const App = () => {
       onChange={e=> setInput(e.target.value)} />
       {todos.map((todo)=>(
         <div>
-          {todo.text}
+          {edit ===todo.id ? 
+        <div>
+          <input type="text"
+          value={editValue}
+          onChange={e=> setEditValue(e.target.value)}
+          />
+        </div>  :
+        <div>
+             {todo.text}
           <button onClick={()=>removeTodo(todo.id)}>Delete</button>
           <button onClick={()=>editTodo(todo.id, todo.text)}>Edit</button>
+        </div>
+        }
+       
         </div>
       ))}
     </div>
