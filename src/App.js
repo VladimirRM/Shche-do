@@ -37,6 +37,15 @@ const App = () => {
     setTodos(editTodo)
     setEdit(null)
   }
+  const toggleTodo = (id)=>{
+    setTodos([...todos].map(todo=>{
+      if(todo.id !== id)
+      return todo
+      return {...todo,
+      completed: !todo.completed
+      }
+    }))
+  }
 
 
   return (
