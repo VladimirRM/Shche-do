@@ -6,6 +6,18 @@ const App = () => {
   const [input,setInput] = useState('')
   const [edit,setEdit] = useState(null)
   const [editValue,setEditValue] = useState('')
+
+  const addTodo = ()=>{
+    if(input){
+      const todo = {
+        text: input,
+        id:Date.now(),
+        completed: false
+      }
+      setTodos([...todos,todo])
+      setInput('')
+    }
+  }
   return (
     <div>
       
