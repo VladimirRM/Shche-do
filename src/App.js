@@ -62,10 +62,14 @@ const App = () => {
             />
             <button onClick={()=>saveTodo(todo.id)}>Save</button>
            </div> :
-           <div>
+           <div className={todo.completed ? 'checkBox' : ''}>
                {todo.text}
           <button onClick={()=>removeTodo(todo.id)}>Delete</button>
           <button onClick={()=>editTodo(todo.id,todo.text)}>Edit</button>
+          <input type="checkbox" 
+          checked={todo.completed}
+          onChange={()=>toggleTodo(todo.id)}
+          />
            </div>
         }
           </div>
