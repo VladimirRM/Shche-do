@@ -55,7 +55,8 @@ const App = () => {
       <div>{todos.map((todo)=>(
         <div>
           {todo.text}
-          
+          <button onClick={()=>removeTodo(todo.id)}>Delete</button>
+          <button onClick={()=>removeTodo(todo.id,todo.text)}>Edit</button>
           </div>
       ))}</div>
     </div>
