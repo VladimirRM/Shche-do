@@ -21,6 +21,11 @@ const App = () => {
   const removeTodo = (id)=>{
     setTodos([...todos].filter((todo)=>todo.id !==id))
   }
+  const editTodo = (id,text)=>{
+    setEdit(id)
+    setEditValue(text)
+  }
+  
   return (
     <div>
       
