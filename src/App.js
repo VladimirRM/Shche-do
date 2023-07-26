@@ -51,7 +51,7 @@ const App = () => {
       value={input}
       onChange={e=>setInput(e.target.value)}
       />
-      
+      <button onClick={AddTodo}> Add</button>
     </div>
   )
 }
