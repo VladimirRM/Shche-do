@@ -53,10 +53,20 @@ const App = () => {
       />
       <button onClick={AddTodo}> Add</button>
       <div>{todos.map((todo)=>(
-        <div>
-          {todo.text}
+        <div key={todo.id}>
+         {edit === todo.id ?
+           <div>
+            <input type="text"
+            value={editValue}
+            onChange={()=>setEditValue(e.target.value)}
+            />
+           </div> :
+           <div>
+               {todo.text}
           <button onClick={()=>removeTodo(todo.id)}>Delete</button>
           <button onClick={()=>removeTodo(todo.id,todo.text)}>Edit</button>
+           </div>
+        }
           </div>
       ))}</div>
     </div>
