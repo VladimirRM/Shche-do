@@ -58,13 +58,14 @@ const App = () => {
            <div>
             <input type="text"
             value={editValue}
-            onChange={()=>setEditValue(e.target.value)}
+            onChange={(e)=>setEditValue(e.target.value)}
             />
+            <button onClick={()=>saveTodo(todo.id)}>Save</button>
            </div> :
            <div>
                {todo.text}
           <button onClick={()=>removeTodo(todo.id)}>Delete</button>
-          <button onClick={()=>removeTodo(todo.id,todo.text)}>Edit</button>
+          <button onClick={()=>editTodo(todo.id,todo.text)}>Edit</button>
            </div>
         }
           </div>
