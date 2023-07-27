@@ -52,7 +52,11 @@ const App = () => {
       />
      <button onClick={addTodo}>Add</button> 
      <div>{todos.map((todo)=>(
-          <div>{todo.text}</div>
+          <div>
+            {todo.text}
+            <button onClick={()=> removeTodo(todo.id)}>Delete </button>
+            <button onClick={()=> editTodo(todo.id,todo.text)}>Edit </button>
+            </div>
      ))}</div>
     </div>
   )
