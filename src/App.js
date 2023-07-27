@@ -50,7 +50,10 @@ const App = () => {
       value={input}
       onChange={(e)=> setInput(e.target.value)}
       />
-      
+     <button onClick={addTodo}>Add</button> 
+     <div>{todos.map((todo)=>(
+          <div>{todo.text}</div>
+     ))}</div>
     </div>
   )
 }
