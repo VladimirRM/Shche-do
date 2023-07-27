@@ -5,7 +5,7 @@ import { useState } from 'react'
 const App = () => {
   const [todos,setTodos]= useState([])
   const [input,setInput]= useState('')
-  const [edit,setEdit]= useState(id)
+  const [edit,setEdit]= useState(null)
   const [editValue,setEditValue]= useState('')
 
   const addTodo = ()=>{
@@ -23,7 +23,7 @@ const App = () => {
         setTodos([...todos].filter((todo)=>todo.id !==id))
   }
   const editTodo = (id,text)=>{
-    setEdit(null)
+    setEdit(id)
     setEditValue(text)
   }
   const saveTodo = (id)=>{
@@ -40,7 +40,7 @@ const App = () => {
     setTodos([...todos].map((todo)=>{
       if(todo.id !==id)
       return todo
-      return {...todos,
+      return {...todo,
       completed: !todo.completed}
     }))
   }
@@ -52,10 +52,24 @@ const App = () => {
       />
      <button onClick={addTodo}>Add</button> 
      <div>{todos.map((todo)=>(
+          <div key={todo.id}>
+            {edit ===todo.id ?
           <div>
-            {todo.text}
+            <input type="text"
+            value={editValue}
+            onChange={(e)=>setEditValue(e.target.value)}
+            />
+            <button onClick={()=>saveTodo(todo.id)}>Save</button>
+          </div>  :
+          <div className={todo.completed ? 'checkBox': ''}>
+                     {todo.text}
             <button onClick={()=> removeTodo(todo.id)}>Delete </button>
             <button onClick={()=> editTodo(todo.id,todo.text)}>Edit </button>
+            <input type="checkbox" 
+            checked={todo.completed}
+            onChange={()=>toggleTodo(todo.id)}/>
+          </div>
+          }
             </div>
      ))}</div>
     </div>
