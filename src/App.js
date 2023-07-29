@@ -61,7 +61,7 @@ const toggleTodo = (id)=>{
           />
           <button onClick={()=>saveTodo(todo.id)}>Save</button>
         </div>:
-        <div cla>
+        <div className={todo.completed ? 'checkBox':''}>
                  {todo.text}
           <button onClick={()=>removeTodo(todo.id)}>Delete</button>
           <button onClick={()=>editTodo(todo.id,todo.text)}>Edit</button>
