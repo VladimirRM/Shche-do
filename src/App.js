@@ -25,6 +25,19 @@ const App = () => {
     setEdit(id)
     setEditValue(text)
   }
+  const saveTodo = (id)=>{
+      const editTodo = [...todo].map((todo)=>{
+        if( todo.id === id){
+          todo.text = editValue
+          return todo
+        }
+        setTodos(editTodo)
+      }
+      
+      )
+
+    
+  }
   return (
     <div>
 
