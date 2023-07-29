@@ -53,7 +53,8 @@ const toggleTodo = (id)=>{
        {todos.map((todo)=>(
         <div key={todo.id}>
           {todo.text}
-          button
+          <button onClick={()=>removeTodo(todo.id)}>Delete</button>
+          <button onClick={()=>editTodo(todo.id,todo.text)}>Edit</button>
           </div>
        ))}
       
