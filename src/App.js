@@ -55,7 +55,9 @@ const toggleTodo = (id)=>{
           {edit === todo.id ?
         <div>
           <input type="text"
-          value={editValue} />
+          value={editValue} 
+          onChange={(e)=>setEditValue(e.target.value)}
+          />
         </div>:
         <div>
                  {todo.text}
