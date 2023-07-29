@@ -32,6 +32,7 @@ const App = () => {
           return todo
         }
         setTodos(editTodo)
+        setEdit(null)
       })
 }
 const toggleTodo = (id)=>{
@@ -58,11 +59,16 @@ const toggleTodo = (id)=>{
           value={editValue} 
           onChange={(e)=>setEditValue(e.target.value)}
           />
+          <button onClick={()=>saveTodo(todo.id)}>Save</button>
         </div>:
-        <div>
+        <div cla>
                  {todo.text}
           <button onClick={()=>removeTodo(todo.id)}>Delete</button>
           <button onClick={()=>editTodo(todo.id,todo.text)}>Edit</button>
+          <input type="checkbox"
+          checked={todo.completed}
+          onChange={()=>toggleTodo(todo.id)}
+          />
         </div>  
         }
           </div>
