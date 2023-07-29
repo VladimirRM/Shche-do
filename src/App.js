@@ -26,7 +26,7 @@ const App = () => {
     setEditValue(text)
   }
   const saveTodo = (id)=>{
-      const editTodo = [...todo].map((todo)=>{
+      const editTodo = [...todos].map((todo)=>{
         if( todo.id === id){
           todo.text = editValue
           return todo
@@ -38,7 +38,7 @@ const toggleTodo = (id)=>{
       setTodos([...todos].map((todo)=>{
         if(todo.id !== id)
         return todo
-        return {...todos,
+        return {...todo,
         completed: !todo.completed
         }
       }))
@@ -50,6 +50,12 @@ const toggleTodo = (id)=>{
        onChange={(e)=>setInput(e.target.value)}
        />
        <button onClick={addTodo}> Add</button>
+       {todos.map((todo)=>(
+        <div key={todo.id}>
+          {todo.text}
+          button
+          </div>
+       ))}
       
     </div>
   )
