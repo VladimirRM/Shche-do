@@ -32,12 +32,17 @@ const App = () => {
           return todo
         }
         setTodos(editTodo)
-      }
-      
-      )
-
-    
-  }
+      })
+}
+const toggleTodo = (id)=>{
+      setTodos([...todos].map((todo)=>{
+        if(todo.id !== id)
+        return todo
+        return {...todos,
+        completed: !todo.completed
+        }
+      }))
+}
   return (
     <div>
 
